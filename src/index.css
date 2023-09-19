@@ -1,0 +1,52 @@
+:root {
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.5;
+  font-weight: 300;
+  font-size: 10px;
+
+  color-scheme: light dark;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --mobile-breakpoint: 375px;
+  --desktop-breakpoint: 1440px; 
+
+  --blue-dark: hsl(209, 23%, 22%);
+  --blue-darker: hsl(207, 26%, 17%);
+  --black-main: hsl(200, 15%, 8%);
+  --grey-dark: hsl(0, 0%, 52%);
+  --grey-lighter: hsl(0, 0%, 98%);
+  --white-main: hsl(0, 0%, 100%);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: var(--black-main);
+    background-color: var(--grey-lighter);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: var(--white-main);
+    background-color: var(--blue-darker);
+  }
+}
+
+ul, li, section, p, h1, h2, h3, h4, h5, h6, a, button, input, textarea, select {
+  padding: 0;
+  margin: 0;
+}
+
+ul, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--white-main)
+}

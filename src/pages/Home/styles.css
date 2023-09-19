@@ -1,0 +1,7 @@
+.countries-list {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 5rem;
+  padding: 8rem;
+  justify-content: center;
+}

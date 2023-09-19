@@ -1,0 +1,30 @@
+.link-country-card {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 18px;
+  width: 240px;
+  background-color: var(--blue-dark);
+  border-radius: 4px;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.link-country-card__flag {
+  border-radius: 0.4rem 0.4rem 0 0;
+}
+
+.link-country-card__information {
+  padding: 0 2rem 4rem 2rem;
+  font-size: 1.4rem;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1.8rem;
+}
+
+.link-country-card__information__name {
+  font-weight: 800;
+  font-size: 1.4rem;
+}
+
+.link-country-card__information__stat {
+  font-weight: 600;
+}
