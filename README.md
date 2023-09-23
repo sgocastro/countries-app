@@ -1,27 +1,31 @@
-# React + TypeScript + Vite
+# Where in the world?
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
+It's an app to show all the countries of the world and some information about them. You can filter countries by region, search for a country and see more detailed information by clicking on a country.
 
-Currently, two official plugins are available:
+## Stack / used libraries
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React
+- TypeScript
+- zod
+- wouter
 
-## Expanding the ESLint configuration
+## Requirements
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- nodejs >= 18.x.x
 
-- Configure the top-level `parserOptions` property like this:
+## How to run
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+1. Clone this repository
+2. Move to the repository directory: `cd countries-app`
+3. Run to install all packages:
+   - `pnpm install`(I used this)
+   - `npm install`
+4. When installation finished, run:
+   - `pnpm run dev`(I used this)
+   - `npm run dev`
+5. Open your browser and go to `http://localhost:5173`
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Demo
+
+- Deploy URL: https://countries-app-self-three.vercel.app
