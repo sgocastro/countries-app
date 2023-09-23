@@ -1,0 +1,22 @@
+.input-container {
+  background-color: var(--background-color-elements);
+  padding: 1.6rem 3.6rem;
+  border-radius: .4rem;
+  display: flex;
+  flex-direction: row;
+  gap: 1.6rem;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+input {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  width: 100%;
+}
+
+input::placeholder {
+  color: var(--color-text);
+  font-size: 1.4rem;
+}
