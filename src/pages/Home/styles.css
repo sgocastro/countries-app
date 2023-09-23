@@ -1,6 +1,7 @@
 .home {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   gap: 5rem;
 }
@@ -9,6 +10,8 @@
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+  gap: 2rem;
+    align-self: normal;
 }
 
 .home__filters__search-input {

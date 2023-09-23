@@ -1,11 +1,11 @@
 import "./styles.css"
-import { FC, useEffect, useState } from "react"
+import { FC, useCallback, useState } from "react"
 import { LinkCountryCard } from "./components"
 import { CountryData } from "../../types"
 import { api } from "../../api"
-import { Dropdown, Input } from "../../components"
+import { Dropdown, Input, SpinnerLoading } from "../../components"
 import { Search } from "../../icons"
-import { useDebounce } from "../../hooks"
+import { useApi, useDebounce } from "../../hooks"
 
 export type CountryCardInformation = Pick<
   CountryData,
@@ -29,9 +29,24 @@ export const Home: FC = () => {
   const [selectedRegion, setRegion] = useState<Regions>("Todas")
   const debouncedValue = useDebounce({ value: searchCountry, delay: 1000 })
 
-  useEffect(() => {
-    getCountries()
-  }, [debouncedValue, selectedRegion])
+  const fetchGetAllByRegion = useCallback(async () => {
+    const parsedSelectedRegion =
+      selectedRegion === "Europa" ? "europe" : selectedRegion.toLowerCase()
+    return await api.getAll.byRegion({ region: parsedSelectedRegion })
+  }, [selectedRegion])
+
+  const getCountries = useCallback(async () => {
+    const countriesApiResult =
+      selectedRegion != "Todas"
+        ? await fetchGetAllByRegion()
+        : debouncedValue != ""
+        ? await api.getAll.byName({ name: debouncedValue })
+        : await api.getAll.all()
+
+    setCountries(countriesApiResult)
+  }, [debouncedValue, selectedRegion, fetchGetAllByRegion])
+
+  const { isFetching, hasError } = useApi({ callApi: getCountries })
 
   return (
     <div className="home">
@@ -52,27 +67,24 @@ export const Home: FC = () => {
           />
         </section>
       </section>
-      <section className="home__countries-list">
-        {countries.map((country) => (
-          <LinkCountryCard
-            key={`${country.name}-${country.cca3}`}
-            {...country}
-          />
-        ))}
-      </section>
+      {isFetching ? (
+        <SpinnerLoading />
+      ) : hasError ? (
+        <h2>An error occurred while obtaining the countries.</h2>
+      ) : countries.length > 0 ? (
+        <section className="home__countries-list">
+          {countries.map((country) => (
+            <LinkCountryCard
+              key={`${country.name}-${country.cca3}`}
+              {...country}
+            />
+          ))}
+        </section>
+      ) : (
+        <h2>No countries found.</h2>
+      )}
     </div>
   )
-
-  async function getCountries() {
-    const countriesApiResult =
-      selectedRegion != "Todas"
-        ? await fetchGetAllByRegion()
-        : searchCountry != ""
-        ? await api.getAll.byName({ name: searchCountry })
-        : await api.getAll.all()
-
-    setCountries(countriesApiResult)
-  }
 
   function handleSelectRegion(region: Regions) {
     setRegion(region)
@@ -82,11 +94,5 @@ export const Home: FC = () => {
   function handleChangeSearchCountry(value: string) {
     setSearchCountry(value)
     setRegion((prevState) => (prevState === "Todas" ? prevState : "Todas"))
-  }
-
-  async function fetchGetAllByRegion() {
-    let parsedSelectedRegion =
-      selectedRegion === "Europa" ? "europe" : selectedRegion.toLowerCase()
-    return await api.getAll.byRegion({ region: parsedSelectedRegion })
   }
 }

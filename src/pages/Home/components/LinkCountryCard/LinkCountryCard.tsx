@@ -1,5 +1,5 @@
-import { Link } from "wouter"
 import "./styles.css"
+import { Link } from "wouter"
 import { CountryCardInformation } from "../../Home"
 import { COUNTRY_DATA_PARSER } from "../../../../helpers"
 
