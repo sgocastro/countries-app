@@ -3,10 +3,11 @@ header {
   top: 0;
   background-color: var(--background-color-elements);
   padding: 2rem 6rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   display: grid;
   grid-template-columns: max-content max-content;
   place-content: center space-between;
+  z-index: 100;
 }
 
 .header__container {
