@@ -1,6 +1,5 @@
-:root {
-  color-scheme: dark light;
-
+:root,
+:root.light {
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -18,34 +17,28 @@
   --grey-lighter: hsl(0, 0%, 98%);
   --white-main: hsl(0, 0%, 100%);
 
-  --color-text: var(--white-main);
-  --background-color-elements: var(--white-main);
-
-}
-
-* {
-  font-family: 'Nunito Sans', sans-serif;
-  color: var(--color-text);
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --color-text: var(--black-main);
-    background-color: var(--grey-lighter);
+  --color-text: var(--black-main);
+  --app-background-color: var(--grey-lighter);
     --background-color-elements: var(--white-main);
-  }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --color-text: var(--white-main);
-    background-color: var(--blue-darker);
+    --app-background-color: var(--blue-darker);
     --background-color-elements: var(--blue-dark);
   }
 }
-body {
+* {
   margin: 0;
   padding: 0;
+  font-family: 'Nunito Sans', sans-serif;
+    color: var(--color-text);
+  }
+  
+  body {
+    color-scheme: light dark;
+    background-color: var(--app-background-color);
 }
 
 ul, li, section, p, h1, h2, h3, article {
