@@ -1,50 +1,49 @@
-import { Country } from "../../types"
+import { Link } from "wouter"
 import "./styles.css"
+import { CountryCardInformation } from "../../Home"
+import { COUNTRY_DATA_PARSER } from "../../../../helpers"
 
 export const LinkCountryCard = ({
-  name,
-  capital,
+  cca3,
   flags,
-  population,
-  region,
-}: Country): JSX.Element => {
+  name,
+  ...props
+}: CountryCardInformation): JSX.Element => {
   return (
-    <a href={`#`}>
+    <Link href={`/country/${cca3}`}>
       <article className="link-country-card">
         <img
           src={flags.png}
-          alt={name.common}
+          alt={flags.alt == "" ? name : flags.alt}
           width="100%"
           height={140}
           loading="lazy"
           className="link-country-card__flag"
         />
         <section className="link-country-card__information">
-          <h2 className="link-country-card__information__name">
-            {name.common}
-          </h2>
+          <h2 className="link-country-card__information__name">{name}</h2>
           <ul>
             <li>
               <span className="link-country-card__information__stat">
-                Population:
+                {COUNTRY_DATA_PARSER.population.description}:
               </span>{" "}
-              {population.toLocaleString("es-AR")}
+              {COUNTRY_DATA_PARSER.population.parserData(props.population)}
             </li>
             <li>
               <span className="link-country-card__information__stat">
-                Region:
+                {COUNTRY_DATA_PARSER.region.description}:
               </span>{" "}
-              {region}
+              {COUNTRY_DATA_PARSER.region.parserData(props.region)}
             </li>
             <li>
               <span className="link-country-card__information__stat">
-                Capital:
+                {COUNTRY_DATA_PARSER.capital.description}:
               </span>{" "}
-              {capital}
+              {COUNTRY_DATA_PARSER.capital.parserData(props.capital)}
             </li>
           </ul>
         </section>
       </article>
-    </a>
+    </Link>
   )
 }
