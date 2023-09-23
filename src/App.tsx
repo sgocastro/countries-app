@@ -1,11 +1,14 @@
-import Home from "./pages/Home"
+import Router from "./Router"
+import { Header } from "./components"
 
 function App() {
   return (
-    <main>
-      <h1>Where in the world</h1>
-      <Home />
-    </main>
+    <>
+      <Header />
+      <main className="app-container">
+        <Router />
+      </main>
+    </>
   )
 }
 
