@@ -1,0 +1,15 @@
+.country-information-stats {
+  display: flex;
+  gap: 1.2rem;
+  flex-flow: column;
+  font-size: 1.6rem;
+  overflow-x: auto;
+}
+
+.country-information-stat__stat {
+  width: 25rem;
+}
+
+.country-information-stats__stat__title {
+  font-weight: 600;
+}
