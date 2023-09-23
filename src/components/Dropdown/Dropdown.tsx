@@ -27,8 +27,9 @@ export const Dropdown: FC<DropdownProps> = ({ label, onSelect, options }) => {
         <section className="dropdown-container__options">
           {options.length ? (
             <ul className="dropdown-container__options__list">
-              {options.map((option) => (
+              {options.map((option, index) => (
                 <li
+                  key={`${option}-${index}`}
                   onClick={() => handleSelectOption(option)}
                   className="dropdown-container__list__option"
                 >
